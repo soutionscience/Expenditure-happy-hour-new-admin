@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/SERViCES/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewPackageComponent } from 'src/app/DIALOGS/new-package/new-package.component';
 import { DeleteComponent } from 'src/app/DIALOGS/delete/delete.component';
+import { AddDaysComponent } from 'src/app/DIALOGS/add-days/add-days.component';
 
 @Component({
   selector: 'app-packages',
@@ -30,6 +31,10 @@ export class PackagesComponent implements OnInit {
     this.dialog.open(DeleteComponent, {width: '300px', height: 'auto',   data: {
       id: p, route: 'api/packages'
     }})
+  }
+
+  addDays(p){
+    this.dialog.open(AddDaysComponent, {width: '500px', height: 'auto', data:{id: p, route: 'api/packages'}})
   }
 
 }
