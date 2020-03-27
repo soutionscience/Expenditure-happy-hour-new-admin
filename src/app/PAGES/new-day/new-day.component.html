@@ -1,0 +1,38 @@
+<div class="new-day">
+    <div class="container">
+        <div class="box">
+            <p class="subtitle is-3">Add New Day</p>
+<div action="" class="form" [formGroup]="createDayForm">
+            <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" type="email" placeholder="Day 1" formControlName="title">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <textarea class="textarea" placeholder="Textarea" formControlName="desc"></textarea>
+    </div>
+  </div>
+  <div class="field is-grouped">
+    <div class="control" (click)="save()">
+      <button class="button is-link">Save</button>
+    </div>
+    <div class="control">
+      <button class="button is-link is-light">Save and New</button>
+    </div>
+    <div class="control">
+        <button class="button is-link is-light">Cancel</button>
+      </div>
+  </div>
+</div>
+
+        </div>
+    </div>
+</div>

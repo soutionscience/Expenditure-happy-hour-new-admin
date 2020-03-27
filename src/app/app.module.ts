@@ -13,6 +13,7 @@ import { NewPackageComponent } from './DIALOGS/new-package/new-package.component
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './DIALOGS/delete/delete.component';
 import { AddDaysComponent } from './DIALOGS/add-days/add-days.component';
+import { NewDayComponent } from './PAGES/new-day/new-day.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AddDaysComponent } from './DIALOGS/add-days/add-days.component';
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

@@ -6,7 +6,8 @@ import { SidebarComponent } from '../ELEMENTS/sidebar/sidebar.component';
 
 const routes: Routes=[
   {path: '', component: HomeComponent, children: [
-    {path: 'packages', loadChildren: ()=> import('./packages.module').then(m=>m.PackagesModule) }
+    {path: 'packages', loadChildren: ()=> import('./packages.module').then(m=>m.PackagesModule) },
+    {path: 'new-day/:id', loadChildren: ()=> import('./new-day.module').then(m=>m.NewDayModule)}
    
   ]}
 ]
