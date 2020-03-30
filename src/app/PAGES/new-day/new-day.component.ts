@@ -9,8 +9,11 @@ import { ApiService } from 'src/app/SERViCES/api.service';
   styleUrls: ['./new-day.component.scss']
 })
 export class NewDayComponent implements OnInit {
-   newDays =[];
+   Day =[];
+   DayObj = {};
    createDayForm : FormGroup
+   id: String
+   
    
 
   constructor(private route:ActivatedRoute, private fb: FormBuilder,
@@ -18,15 +21,22 @@ export class NewDayComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-   const id = this.route.snapshot.params['id'];
+   this.id = this.route.snapshot.params['id'];
    
   }
 
   save(){
-    this.newDays.push(this.createDayForm.value)
-    console.log('wait ', this.createDayForm.value)
-    console.log('new days', this.newDays)
+    this.api.postResource('api/days', this.createDayForm.value)
+    .subscribe(resp=> { 
+      this.Day.push(resp);
+      this.DayObj = {id: this.Day[0]._id}
+      console.log('body ', this.Day[0]._id)
+      this.api.postSpecificResource('api/packages', this.id, 'days', this.DayObj)
+      .subscribe(resp=> console.log('posted to packages'))
 
+
+    }
+    )
   }
   createForm(){
     console.log('creating')

@@ -1,8 +1,10 @@
 <div class="new-day">
     <div class="container">
-        <div class="box">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="box">
             <p class="subtitle is-3">Add New Day</p>
-<div action="" class="form" [formGroup]="createDayForm">
+  <div action="" class="form" [formGroup]="createDayForm">
             <div class="field">
     <p class="control has-icons-left has-icons-right">
       <input class="input" type="email" placeholder="Day 1" formControlName="title">
@@ -31,8 +33,20 @@
         <button class="button is-link is-light">Cancel</button>
       </div>
   </div>
-</div>
+  </div>
+  
+        </div>
 
         </div>
+
+        <div class="column">
+         <p class="title">
+           Days
+         </p>
+        </div>
+
+
+      </div>
+   
     </div>
 </div>
