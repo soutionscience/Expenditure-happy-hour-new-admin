@@ -18,6 +18,9 @@ export class ApiService {
   deleteResource(apiRoute, id): Observable<any[]>{
     return this.restangular.one(apiRoute, id).remove()
   }
+  getSpecificResource(apiRoute, id): Observable<any[]>{
+    return this.restangular.one(apiRoute,id).get()
+  }
   postSpecificResource(apiRoute, id, item, resource): Observable<any[]>{
     return this.restangular.one(apiRoute, id).all(item).post(resource)
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/SERViCES/api.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-new-day',
@@ -13,15 +14,18 @@ export class NewDayComponent implements OnInit {
    DayObj = {};
    createDayForm : FormGroup
    id: String
+   Package = [];
    
    
 
   constructor(private route:ActivatedRoute, private fb: FormBuilder,
-    private api: ApiService) { }
+    private api: ApiService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.createForm();
    this.id = this.route.snapshot.params['id'];
+   this.getPackage()
    
   }
 
@@ -32,7 +36,7 @@ export class NewDayComponent implements OnInit {
       this.DayObj = {id: this.Day[0]._id}
       console.log('body ', this.Day[0]._id)
       this.api.postSpecificResource('api/packages', this.id, 'days', this.DayObj)
-      .subscribe(resp=> console.log('posted to packages'))
+      .subscribe()
 
 
     }
@@ -44,6 +48,11 @@ export class NewDayComponent implements OnInit {
      title: ['', [Validators.required]],
      desc: ['', [Validators.required]]
    }) 
+  }
+
+  getPackage(){
+    this.api.getSpecificResource('api/packages', this.id)
+    .subscribe(resp=> {this.Package.push(resp)})
   }
 
 }
