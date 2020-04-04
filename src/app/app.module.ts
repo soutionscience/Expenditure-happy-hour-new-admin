@@ -14,10 +14,11 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './DIALOGS/delete/delete.component';
 import { AddDaysComponent } from './DIALOGS/add-days/add-days.component';
 import { NewDayComponent } from './PAGES/new-day/new-day.component';
+import { ImageUploadComponent } from './ELEMENTS/image-upload/image-upload.component';
 
 
 @NgModule({
-  declarations: [ NewPackageComponent, DeleteComponent, AddDaysComponent],
+  declarations: [ NewPackageComponent, DeleteComponent, AddDaysComponent, ImageUploadComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

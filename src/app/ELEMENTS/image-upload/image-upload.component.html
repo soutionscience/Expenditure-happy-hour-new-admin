@@ -1,0 +1,22 @@
+<div class="file is-boxed is-danger">
+    <label class="file-label">
+      <input #imageInput 
+      class="file-input" type="file" name="image"
+      accept="image/*" (change)="processFIle(imageInput)">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Choose an Image
+        </span>
+      </span>
+    </label>
+  </div>
+
+  <div *ngIf="selectedFile" class="img-preview-container">
+      
+      <div class="img-preview"
+        [ngStyle]="{'background-image': 'url('+ selectedFile.src +')'}">
+      </div>
+  </div>
