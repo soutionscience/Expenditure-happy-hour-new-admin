@@ -24,13 +24,11 @@
   </div>
   <div class="field is-grouped">
     <div class="control" (click)="save()">
-      <button class="button is-link">Save</button>
+      <button class="button is-link">Save and New</button>
     </div>
+ 
     <div class="control">
-      <button class="button is-link is-light">Save and New</button>
-    </div>
-    <div class="control">
-        <button class="button is-link is-light">Cancel</button>
+        <button class="button is-danger is-light" (click)="clearForm()">Cancel</button>
       </div>
   </div>
   </div>
@@ -59,7 +57,7 @@
             </div>
           </div>
           <footer class="card-footer">
-           <a href="#" class="card-footer-item">Delete</a>
+           <a (click)="deleteDay(day._id)" class="card-footer-item">Delete</a>
           </footer>
 
         </div>

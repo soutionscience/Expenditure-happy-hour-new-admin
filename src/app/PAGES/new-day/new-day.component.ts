@@ -34,16 +34,19 @@ export class NewDayComponent implements OnInit {
     .subscribe(resp=> { 
       this.Day.push(resp);
       this.DayObj = {id: this.Day[0]._id}
-      console.log('body ', this.Day[0]._id)
+     // console.log('body ', this.Day[0]._id)
       this.api.postSpecificResource('api/packages', this.id, 'days', this.DayObj)
-      .subscribe()
+      .subscribe( resp=>{
+        //console.log('the fuck ', resp)
+        this.clearForm()
+      })
 
 
     }
     )
   }
   createForm(){
-    console.log('creating')
+   // console.log('creating')
     this.createDayForm = this.fb.group({
      title: ['', [Validators.required]],
      desc: ['', [Validators.required]]
@@ -53,6 +56,20 @@ export class NewDayComponent implements OnInit {
   getPackage(){
     this.api.getSpecificResource('api/packages', this.id)
     .subscribe(resp=> {this.Package.push(resp)})
+  }
+
+  clearForm(){
+    //console.log('clear')
+    this.createDayForm.reset({
+     'title': '',
+      'desc ': ''
+
+    })
+  }
+  deleteDay(id){
+    console.log(id)
+    this.api.deleteResource('api/days', id)
+    .subscribe(resp=>   location.reload())
   }
 
 }
