@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/SERViCES/api.service';
 import { ImageUploadService } from 'src/app/SERViCES/image-upload.service';
+//import { EventEmitter } from 'protractor';
 //import { read } from 'fs';
 
 class ImageSnippet {
@@ -16,6 +17,10 @@ class ImageSnippet {
 })
 export class ImageUploadComponent implements OnInit {
   selectedFile: ImageSnippet
+  imageUrl : string;
+  //@Output() example= new EventEmitter()
+ @Output() imageEvent = new EventEmitter<string>();
+
 
 
   constructor(private imageUploadService: ImageUploadService) { }
@@ -32,7 +37,9 @@ export class ImageUploadComponent implements OnInit {
 
       this.imageUploadService.uploadImage(this.selectedFile.file)
       .subscribe(resp=>{
-        console.log('send successfully ', resp)
+       this.imageUrl = resp.url
+       console.log(this.imageUrl)
+      this.imageEvent.emit(this.imageUrl)
       }, (error)=>{
      console.log("ERROR", error)
       })

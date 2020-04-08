@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/SERViCES/api.service';
+import { ImageUploadComponent } from 'src/app/ELEMENTS/image-upload/image-upload.component';
 
 @Component({
   selector: 'app-new-package',
@@ -10,6 +11,8 @@ import { ApiService } from 'src/app/SERViCES/api.service';
 })
 export class NewPackageComponent implements OnInit {
   CreatePackageForm: FormGroup
+
+  imageUrl: string
 
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<NewPackageComponent>,
     private api: ApiService) { }
@@ -24,11 +27,13 @@ export class NewPackageComponent implements OnInit {
       shortDesc: ['', [Validators.required]],
       desc: ['', [Validators.required]],
       Type: [false, [Validators.required]],
-      featured: [false, [Validators.required]]
+      featured: [false, [Validators.required]],
+      image: [false, [Validators.required]]
 
     })
   }
   submit(){
+
     this.api.postResource('api/packages', this.CreatePackageForm.value)
     .subscribe(resp=>{
       console.log('resp from server ', resp)
@@ -36,5 +41,11 @@ export class NewPackageComponent implements OnInit {
       location.reload();
     })
   }
+
+  receiveUrl($event){
+    this.imageUrl= $event
+    this.CreatePackageForm.value.image = this.imageUrl;
+   // console.log(  'received ',  this.CreatePackageForm.value.image = this.imageUrl)
+    }
 
 }
