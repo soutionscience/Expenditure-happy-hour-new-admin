@@ -1,10 +1,15 @@
 <div class="mytitle has-text-white has-background-primary">
-    <p class="subtitle has-text-white">Add New Title</p>
+    <p class="subtitle has-text-white">Add New Package</p>
+
+   
 </div>
-<form class="form" [formGroup]="CreatePackageForm">
+<div class="file is-boxed">
+  <app-image-upload (imageEvent)="receiveUrl($event)"></app-image-upload>
+   </div>
+<form class="form"   [formGroup]="CreatePackageForm" *ngIf="imageUrl">
 
   <div class="field">
-    {{CreatePackageForm.value.title}}
+  
     <label class="label">Package Title</label>
     <div class="control">
       <input class="input" type="text" placeholder="Text input"
@@ -14,7 +19,7 @@
 
   
   <div class="field">
-    {{CreatePackageForm.value.shortDesc}}
+    
     <label class="label">Short Desc</label>
     <div class="control">
       <input class="input" type="text" placeholder="Text input"
@@ -29,9 +34,7 @@
     </div>
   </div>
 
-  <div class="file is-boxed">
- <app-image-upload (imageEvent)="receiveUrl($event)"></app-image-upload>
-  </div>
+
   
 
 
@@ -40,10 +43,10 @@
     <label class="label">Type</label>
     <div class="control">
       <div class="select">
-        <select>
+        <select  formControlName="multiDay">
           <option>Select dropdown</option>
-          <option>Single Day</option>
-          <option>Multi Day</option>
+          <option value=false>Single Day</option>
+          <option value=true>Multi Day</option>
         </select>
       </div>
     </div>
@@ -52,16 +55,15 @@
  
   
   <div class="field">
-      <p>Featured?</p>
+    <label class="label">Featured?</label>
     <div class="control">
-      <label class="radio">
-        <input type="radio" name="question">
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="question">
-        No
-      </label>
+      <div class="select">
+        <select  formControlName="featured">
+          <option>Select dropdown</option>
+          <option value=false>No</option>
+          <option value=true>Yes</option>
+        </select>
+      </div>
     </div>
   </div>
 
@@ -76,7 +78,7 @@
       </span>
     </p>
     <p class="control">
-      <input class="input" type="text" placeholder="Amount of money">
+      <input  formControlName="cost" class="input" type="text" placeholder="Amount of money">
     </p>
     <p class="control">
       <a class="button is-primary">
