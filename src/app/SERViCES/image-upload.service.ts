@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ImageUploadService {
-  private REST_API_SERVER = "http://localhost:3000";
+  private REST_API_SERVER = "http://localhost:3000/api/images-upload";
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +15,6 @@ export class ImageUploadService {
   public uploadImage(image: File): Observable<any>{
     const formData = new FormData;
     formData.append('image', image);
-    return this.http.post('http://localhost:3000/api/images-upload', formData)
+    return this.http.post('https://happyhour-safaris.herokuapp.com/api/images-upload', formData)
   }
 }

@@ -15,6 +15,8 @@ import { DeleteComponent } from './DIALOGS/delete/delete.component';
 
 import { NewDayComponent } from './PAGES/new-day/new-day.component';
 import { ImageUploadComponent } from './ELEMENTS/image-upload/image-upload.component';
+import { CountryPickerModule } from 'ngx-country-picker';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { ImageUploadComponent } from './ELEMENTS/image-upload/image-upload.compo
     RestangularModule.forRoot(restangularConfigFactory),
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   CountryPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,11 +4,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewPackageComponent } from 'src/app/DIALOGS/new-package/new-package.component';
 import { DeleteComponent } from 'src/app/DIALOGS/delete/delete.component';
 import { AddDaysComponent } from 'src/app/DIALOGS/add-days/add-days.component';
+import { CountryPickerService } from 'ngx-country-picker';
 
 @Component({
   selector: 'app-packages',
   templateUrl: './packages.component.html',
-  styleUrls: ['./packages.component.scss']
+  styleUrls: ['./packages.component.scss'],
+  providers:[CountryPickerService]
 })
 export class PackagesComponent implements OnInit {
  allPackages: String[];

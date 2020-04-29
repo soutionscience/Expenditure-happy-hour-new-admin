@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "bulma": "^0.8.0",
+    "ngx-country-picker": "^2.2.0",
     "ngx-restangular": "^5.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

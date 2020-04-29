@@ -30,6 +30,7 @@ export class NewDayComponent implements OnInit {
   }
 
   save(){
+    this.Day.length = 0;
     this.api.postResource('api/days', this.createDayForm.value)
     .subscribe(resp=> { 
       this.Day.push(resp);
